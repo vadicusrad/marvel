@@ -6,16 +6,20 @@ import ErrorMessage from "../errorMessage/ErrorMessage";
 import mjolnir from "../../resources/img/mjolnir.png";
 
 class RandomChar extends Component {
-  constructor(props) {
-    super(props);
-    this.updateChar();
-  }
-
   state = {
     char: {},
     loading: true,
     error: false,
   };
+
+  componentDidMount() {
+    this.updateChar();
+    this.timerId = setInterval(this.updateChar, 3000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerId);
+  }
 
   marvelService = new MarvelService();
 

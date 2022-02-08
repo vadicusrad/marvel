@@ -3,7 +3,7 @@ import abyss from "../../resources/img/abyss.jpg";
 import MarvelService from "../../services/MarvelService";
 import { useEffect, useState } from "react";
 
-const CharList = () => {
+const CharList = (props) => {
   const [chatList, setCharList] = useState([]);
 
   const marvelSevice = new MarvelService();
@@ -24,7 +24,11 @@ const CharList = () => {
             imgStyle = { objectFit: "contain" };
           }
           return (
-            <li key={item.id} className="char__item">
+            <li
+              key={item.id}
+              onClick={() => props.onCharSelected(item.id)}
+              className="char__item"
+            >
               <img src={item.thumbnail} alt="img" style={imgStyle} />
               <div className="char__name">{item.name}</div>
             </li>

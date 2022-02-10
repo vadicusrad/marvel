@@ -3,6 +3,7 @@ import RandomChar from "../randomChar/RandomChar";
 import CharList from "../charList/CharList";
 import CharInfo from "../charInfo/CharInfo";
 import ErrorBoundary from "../errorBoundary/ErrorBoundary";
+import propTypes from "prop-types";
 import { Component } from "react";
 
 import decoration from "../../resources/img/vision.png";
@@ -37,4 +38,7 @@ class App extends Component {
   }
 }
 
+App.propTypes = {
+  onCharSelected: propTypes.func.isRequired,
+};
 export default App;
